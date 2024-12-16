@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cửa Hàng Sản Phẩm Thiên Nhiên</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product h3 {
+            font-size: 20px;
+            color: #333;
+        }
+        .product p {
+            color: #555;
+        }
+        .product .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1> Sản Phẩm</h1></a>
+    </header>
+    <nav>
+        <a href="huemy.html">Trang Chủ</a>
+        <a href="my1.html">Sản Phẩm</a>
+        <a href="cart.html">Giỏ Hàng</a>
+        <a href="contact.html">Liên Hệ</a> <!-- Liên kết đến trang Liên Hệ -->
+    </nav>
+    <!-- Main Content: Product Section -->
+    <div class="container">
+        <div id="san-pham-dau-dua" class="product">
+            <img src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzko9heqy8gdf8" alt="Dầu Dừa Tự Nhiên">
+            <h3>Dầu Dừa Tự Nhiên</h3>
+            <p>Chăm sóc tóc, da và làm sạch tự nhiên.</p>
+            <p class="price">100.000 VND</p>
+            <button onclick="addToCart('Dầu Dừa Tự Nhiên', 100000, 'https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzko9heqy8gdf8')">Thêm Vào Giỏ</button>
+        </div>
+
+        <div id="san-pham-sua-tam" class="product">
+            <img src="https://product.hstatic.net/200000311493/product/hoa_cuc_06a3a16cd8ec431da3b74f2335c1c4aa.jpg" alt="Sữa Tắm Hoa Cúc">
+            <h3>Sữa Tắm Hoa Cúc</h3>
+            <p>Giúp thư giãn và làm mềm da.</p>
+            <p class="price">150.000 VND</p>
+            <button onclick="addToCart('Sữa Tắm Hoa Cúc', 150000, 'https://product.hstatic.net/200000311493/product/hoa_cuc_06a3a16cd8ec431da3b74f2335c1c4aa.jpg')">Thêm Vào Giỏ</button>
+        </div>
+
+        <div id="san-pham-oa-huong" class="product">
+            <img src="https://nhathom.vn/resources/img/product/4-2019/tinh-dau-thien-nhien-oai-huong.jpg" alt="Tinh Dầu Oải Hương">
+            <h3>Tinh Dầu Oải Hương</h3>
+            <p>Giảm stress, cải thiện giấc ngủ.</p>
+            <p class="price">200.000 VND</p>
+            <button onclick="addToCart('Tinh Dầu Oải Hương', 200000, 'https://nhathom.vn/resources/img/product/4-2019/tinh-dau-thien-nhien-oai-huong.jpg')">Thêm Vào Giỏ</button>
+        </div>
+
+        <div id="san-pham-mat-na-dat-set" class="product">
+            <img src="https://bizweb.dktcdn.net/100/345/186/products/mat-na-kiehl-rare-earth-deep-pore-cleansing-mask-02.jpg?v=1573448642910" alt="Mặt Nạ Đất Sét">
+            <h3>Mặt Nạ Đất Sét</h3>
+            <p>Giúp làm sạch và sáng da hiệu quả.</p>
+            <p class="price">120.000 VND</p>
+            <button onclick="addToCart('Mặt Nạ Đất Sét', 120000, 'https://bizweb.dktcdn.net/100/345/186/products/mat-na-kiehl-rare-earth-deep-pore-cleansing-mask-02.jpg?v=1573448642910')">Thêm Vào Giỏ</button>
+        </div>
+
+        <div id="san-pham-son-duong-mat-ong" class="product">
+            <img src="https://product.hstatic.net/200000719021/product/upload_e5d173c677ec4d25ac8fed90572c233a_1024x1024.jpg" alt="Son Dưỡng Mật Ong">
+            <h3>Son Dưỡng Mật Ong</h3>
+            <p>Giúp mềm mịn, dưỡng hồng.</p>
+            <p class="price">200.000 VND</p>
+            <button onclick="addToCart('Son Dưỡng Mật Ong', 200000, 'https://product.hstatic.net/200000719021/product/upload_e5d173c677ec4d25ac8fed90572c233a_1024x1024.jpg')">Thêm Vào Giỏ</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cửa Hàng Sản Phẩm Thiên Nhiên. Mọi quyền được bảo lưu.</p>
+        <p>Email: support@shop.vn | Hotline: 123-456-789</p>
+    </footer>
+
+    <script>
+        // Giỏ hàng (có thể lưu vào localStorage)
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Hàm thêm sản phẩm vào giỏ hàng
+        function addToCart(name, price, img) {
+            const product = { name, price, img, quantity: 1 };
+
+            // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
+            const existingProduct = cart.find(item => item.name === name);
+            if (existingProduct) {
+                existingProduct.quantity += 1;  // Tăng số lượng nếu đã có
+            } else {
+                cart.push(product);  // Thêm mới sản phẩm vào giỏ hàng
+            }
+
+            // Lưu giỏ hàng vào localStorage
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            // Thông báo cho người dùng
+            alert(`${name} đã được thêm vào giỏ hàng`);
+        }
+    </script>
+
+</body>
+</html>

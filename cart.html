@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .cart-container {
+            margin: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-container th, .cart-container td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-container th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .cart-container td input {
+            width: 50px;
+            text-align: center;
+        }
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .cart-footer button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .cart-footer button:hover {
+            background-color: #45a049;
+        }
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Giỏ Hàng</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="huemy.html">Trang Chủ</a>
+        <a href="my1.html">Sản Phẩm</a>
+        <a href="cart.html">Giỏ Hàng</a>
+        <a href="contact.html">Liên Hệ</a>
+    </nav>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <h2>Danh Sách Sản Phẩm Trong Giỏ Hàng</h2>
+        <table id="cartTable">
+            <thead>
+                <tr>
+                    <th>Ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá</th>
+                    <th>Số Lượng</th>
+                    <th>Tổng</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Các sản phẩm sẽ được thêm vào ở đây bằng JavaScript -->
+            </tbody>
+        </table>
+
+        <div class="cart-footer">
+            <span class="total-price">Tổng Tiền: 0 VND</span>
+            <button onclick="checkout()">Thanh Toán</button>
+        </div>
+    </div>
+
+    <script>
+        // Dữ liệu giỏ hàng tạm thời (Có thể lấy từ localStorage hoặc từ backend)
+        const cartItems = [
+            {
+                id: 1,
+                name: "Dầu Dừa Tự Nhiên",
+                price: 100000,
+                quantity: 2,
+                img: "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lzko9heqy8gdf8"
+            },
+            {
+                id: 2,
+                name: "Sữa Tắm Hoa Cúc",
+                price: 150000,
+                quantity: 1,
+                img: "https://product.hstatic.net/200000311493/product/hoa_cuc_06a3a16cd8ec431da3b74f2335c1c4aa.jpg"
+            }
+        ];
+
+        // Hàm hiển thị giỏ hàng
+        function displayCart() {
+            const cartTableBody = document.querySelector("#cartTable tbody");
+            cartTableBody.innerHTML = "";
+            let total = 0;
+
+            cartItems.forEach(item => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td><img src="${item.img}" alt="${item.name}" width="50"></td>
+                    <td>${item.name}</td>
+                    <td>${item.price.toLocaleString()} VND</td>
+                    <td><input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, this.value)"></td>
+                    <td>${(item.price * item.quantity).toLocaleString()} VND</td>
+                    <td><button onclick="removeItem(${item.id})">Xóa</button></td>
+                `;
+                cartTableBody.appendChild(row);
+                total += item.price * item.quantity;
+            });
+
+            // Cập nhật tổng tiền
+            document.querySelector(".total-price").textContent = `Tổng Tiền: ${total.toLocaleString()} VND`;
+        }
+
+        // Hàm cập nhật số lượng sản phẩm
+        function updateQuantity(id, quantity) {
+            const item = cartItems.find(item => item.id === id);
+            if (item) {
+                item.quantity = parseInt(quantity);
+                displayCart();
+            }
+        }
+
+        // Hàm xóa sản phẩm khỏi giỏ hàng
+        function removeItem(id) {
+            const index = cartItems.findIndex(item => item.id === id);
+            if (index !== -1) {
+                cartItems.splice(index, 1);
+                displayCart();
+            }
+        }
+        //Hàm xử lý khi bấm thanh toán
+    <div class="form-container">
+        <h2>Thông Tin Thanh Toán</h2>
+        
+        <!-- Biểu mẫu thanh toán -->
+        <form action="process_payment.php" method="POST">
+
+            <!-- Họ tên -->
+            <label for="fullname">Họ và Tên:</label>
+            <input type="text" id="fullname" name="fullname" required placeholder="Nhập họ tên của bạn">
+            
+            <!-- Địa chỉ email -->
+            <label for="email">Địa chỉ Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+            
+            <!-- Số điện thoại -->
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" required placeholder="Nhập số điện thoại của bạn">
+            
+            <!-- Địa chỉ giao hàng -->
+            <label for="address">Địa chỉ giao hàng:</label>
+            <input type="text" id="address" name="address" required placeholder="Nhập địa chỉ giao hàng">
+            
+            <!-- Phương thức thanh toán -->
+            <label for="payment-method">Phương thức thanh toán:</label>
+            <select id="payment-method" name="payment_method" required>
+                <option value="credit_card">Thẻ tín dụng</option>
+                <option value="paypal">Ví điện tử (PayPal)</option>
+                <option value="bank_transfer">Chuyển khoản ngân hàng</option>
+            </select>
+            
+            <!-- Số tiền thanh toán -->
+            <label for="amount">Số tiền cần thanh toán:</label>
+            <input type="number" id="amount" name="amount" value="500000" readonly>
+            
+            <!-- Nút Thanh toán -->
+            <button type="submit">Thanh toán</button>
+        </form>
+    </div>
+        // Hàm xử lý thanh toán
+        function checkout() {
+            if (cartItems.length > 0) {
+                alert("Cảm ơn bạn đã mua sắm tại cửa hàng của chúng tôi!");
+                // Có thể redirect đến trang thanh toán hoặc gửi dữ liệu giỏ hàng cho server
+                window.location.href = "thankyou.html"; // Trang cảm ơn hoặc thanh toán
+            } else {
+                alert("Giỏ hàng của bạn đang trống!");
+            }
+        }
+
+        // Hiển thị giỏ hàng khi trang tải
+        window.onload = displayCart;
+    </script>
+</body>
+</html>
